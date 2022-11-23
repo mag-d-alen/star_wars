@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Film } from "./components/film/Film";
+import { Header } from "./components/header/Header";
+import { Layout } from "./components/layout/Layout";
+import { MainContentContainer } from "./components/layout/MainContentContainer";
+import { TOC } from "./components/TOC/TOC";
+import { WelcomeScreen } from "./components/welcomeScreen/WelcomeScreen";
+import { FilmType } from "./types";
+
 
 function App() {
+  const [chosenFilm, setChosenFilm] = useState<FilmType | null>(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Header />
+      <MainContentContainer>
+        <TOC onChooseFilm={setChosenFilm} />
+        {chosenFilm ? <Film film={chosenFilm} /> : <WelcomeScreen />}
+      </MainContentContainer>
+    </Layout>
   );
 }
 
