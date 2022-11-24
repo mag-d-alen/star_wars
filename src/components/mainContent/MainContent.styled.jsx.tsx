@@ -6,9 +6,10 @@ export const MainContainer = styled.main`
   flex-direction: column;
   background-color: #00000071;
   color: white;
-
 `;
-export const InnerContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+
+export const WelcomeText = styled.h1`
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Poller One", cursive;
 `;

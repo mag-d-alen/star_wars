@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { setConstantValue } from "typescript";
 import { useStateContext } from "../../state/StateContext";
 import { FilmType } from "../../types";
 import { Button } from "../button/Button";
@@ -22,7 +21,7 @@ export const Film: React.FC<{ film: FilmType }> = ({ film }) => {
   }, [film, favourites]);
 
   const removeFromFavourites = () => {
-    const updatedFavourites = favourites.filter((f) => f.title != film.title);
+    const updatedFavourites = favourites.filter((f) => f.title !== film.title);
     setFavourites(updatedFavourites);
   };
   const addToFavourites = () => {
@@ -37,14 +36,14 @@ export const Film: React.FC<{ film: FilmType }> = ({ film }) => {
       <ButtonContainer>
         {liked ? (
           <Button
-            width={"30"}
+            width={"40"}
             color={"#f04c4ce3"}
             clickHandle={removeFromFavourites}
             text={"   Remove from favourites"}
           />
         ) : (
           <Button
-            width={"30"}
+            width={"40"}
             color={"#f04c4ce3"}
             clickHandle={addToFavourites}
             text={"Add to Favourites"}

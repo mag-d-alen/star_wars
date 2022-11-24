@@ -6,6 +6,7 @@ export const LoaderContainer = styled.p`
   opacity: 0;
   animation: loader 60s infinite;
   @media (max-width: 820px) {
+    font-size: 6rem;
     margin-top: 0;
   }
   @keyframes loader {

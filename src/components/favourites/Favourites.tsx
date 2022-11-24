@@ -11,16 +11,18 @@ export const Favourites: React.FC = () => {
   const { favourites, films } = useStateContext();
   return (
     <FavouritesContainer>
-      {favourites && films ? (
-        <div>
-          <FavouritesHeader>Your favourite movies: </FavouritesHeader>
-          {favourites.map((f: FilmType) => (
-            <FavouritesTitle key={f.episode_id}>{f.title}</FavouritesTitle>
-          ))}
-        </div>
-      ) : (
-      null
-      )}
+      {films ? (
+        <>
+          <FavouritesHeader>Your favourite movies </FavouritesHeader>
+          {favourites.length ? (
+            favourites.map((f: FilmType) => (
+              <FavouritesTitle key={f.episode_id}>{f.title}</FavouritesTitle>
+            ))
+          ) : (
+            <FavouritesTitle>...will appear here</FavouritesTitle>
+          )}
+        </>
+      ) : null}
     </FavouritesContainer>
   );
 };

@@ -7,7 +7,7 @@ export const ButtonContainer = styled.button<{ color: string; width: string }>`
   filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.2));
   border-radius: 0.5rem;
   border: none;
-  max-width: ${({ width }) => ` ${width}%`};
+  max-width: ${({ width }) => `${width}%`};
   background-color: ${({ color }) => `${color}`};
   text-transform: uppercase;
   font-weight: 500;

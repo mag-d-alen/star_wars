@@ -5,6 +5,7 @@ export const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
+  height: 100vh;
   margin: 0;
   background-image: url(${hero});
   background-size: cover;
