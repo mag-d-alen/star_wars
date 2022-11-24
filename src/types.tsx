@@ -14,3 +14,10 @@ export type FilmType = {
   url: string;
   vehicles: string[];
 };
+export type StateContextType = {
+  favourites: FilmType[] | [];
+  setFavourites: Function;
+  filmDetails: FilmType | null;
+  setFilmDetails: Function;
+};
+
