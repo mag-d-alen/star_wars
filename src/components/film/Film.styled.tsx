@@ -5,7 +5,7 @@ export const FilmInfoContainer = styled.div`
   flex-direction: column;
   height: 100%;
   width: 70%;
-  padding: 1.5rem 0 1rem 0;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
   flex: 1;
   background-color: #0000004a;
   color: white;
