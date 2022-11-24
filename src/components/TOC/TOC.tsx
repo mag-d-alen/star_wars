@@ -1,24 +1,25 @@
-import React, { useContext } from "react";
-import { useGetFilmsData } from "../../hooks/useGetFilmsData";
+import React from "react";
 import { useStateContext } from "../../state/StateContext";
 import { FilmType } from "../../types";
+import { Button } from "../button/Button";
 import { Loader } from "../loader/Loader";
-import { Button, TOCContainer } from "./TOC.styled";
+import { TOCContainer } from "./TOC.styled";
 
 export const TOC: React.FC = () => {
-  const films = useGetFilmsData();
-  const { setFilmDetails } = useStateContext();
+  const { setFilmDetails, films } = useStateContext();
   return (
     <TOCContainer>
       {films ? (
         films?.map((film: FilmType) => (
           <Button
             key={film.episode_id}
-            onClick={() => {
+            clickHandle={() => {
               setFilmDetails(film);
-            }}>
-            {film.title}
-          </Button>
+            }}
+            width={"100"}
+            color={"#ffffff74"}
+            text={film.title}
+          />
         ))
       ) : (
         <Loader />

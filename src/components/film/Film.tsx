@@ -1,37 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { setConstantValue } from "typescript";
 import { useStateContext } from "../../state/StateContext";
 import { FilmType } from "../../types";
-import { FilmInfoContainer } from "./FilmInfoContainer";
+import { Button } from "../button/Button";
+
+import {
+  ButtonContainer,
+  FilmCrawl,
+  FilmInfoContainer,
+  FilmTitle,
+  ReleaseDate,
+} from "./Film.styled";
 
 export const Film: React.FC<{ film: FilmType }> = ({ film }) => {
   const { title, release_date, opening_crawl } = film;
   const { setFavourites, favourites } = useStateContext();
-  const [liked, setLiked] = useState<boolean>(
-    favourites.some((f) => film.title === f.title)
-  );
+  const [liked, setLiked] = useState<boolean>(false);
 
-  const addToFavourites = (film: FilmType) => {
-    if (favourites.length && liked) {
-      const updatedFavourites = favourites.filter((f) => f.title != film.title);
-      setLiked(false);
-      setFavourites(updatedFavourites);
-    } else {
-      setLiked(true);
-      setFavourites((prev: FilmType[]) => [...prev, film]);
-    }
+  useEffect(() => {
+    setLiked(favourites.some((f) => film.title === f.title));
+  }, [film, favourites]);
+
+  const removeFromFavourites = () => {
+    const updatedFavourites = favourites.filter((f) => f.title != film.title);
+    setFavourites(updatedFavourites);
+  };
+  const addToFavourites = () => {
+    setFavourites((prev: FilmType[]) => [...prev, film]);
   };
 
   return (
     <FilmInfoContainer>
-      <div>{title}</div>
-      <div>{release_date}</div>
-      <div>{opening_crawl}</div>
-      <label>fav</label>
-      <button onClick={() => addToFavourites(film)}>
-        {liked ? <p> Remove from favourites</p> : <p> Add to favourites</p>}
-      </button>
-      ;
+      <FilmTitle>{title}</FilmTitle>
+      <ReleaseDate> Released in {release_date.slice(0, 4)}</ReleaseDate>
+      <FilmCrawl>{opening_crawl}</FilmCrawl>
+      <ButtonContainer>
+        {liked ? (
+          <Button
+            width={"30"}
+            color={"#f04c4ce3"}
+            clickHandle={removeFromFavourites}
+            text={"   Remove from favourites"}
+          />
+        ) : (
+          <Button
+            width={"30"}
+            color={"#f04c4ce3"}
+            clickHandle={addToFavourites}
+            text={"Add to Favourites"}
+          />
+        )}
+      </ButtonContainer>
     </FilmInfoContainer>
   );
 };

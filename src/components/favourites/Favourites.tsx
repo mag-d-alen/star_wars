@@ -1,21 +1,26 @@
 import React from "react";
 import { useStateContext } from "../../state/StateContext";
 import { FilmType } from "../../types";
+import {
+  FavouritesContainer,
+  FavouritesHeader,
+  FavouritesTitle,
+} from "./Favourites.styled";
 
 export const Favourites: React.FC = () => {
-  const { favourites } = useStateContext();
+  const { favourites, films } = useStateContext();
   return (
-    <>
-      {favourites ? (
+    <FavouritesContainer>
+      {favourites && films ? (
         <div>
-          <p>Your favourite movies: </p>
+          <FavouritesHeader>Your favourite movies: </FavouritesHeader>
           {favourites.map((f: FilmType) => (
-            <div key={f.episode_id}>{f.title}</div>
+            <FavouritesTitle key={f.episode_id}>{f.title}</FavouritesTitle>
           ))}
         </div>
       ) : (
-        <div>Which movie is your favourite?</div>
+      null
       )}
-    </>
+    </FavouritesContainer>
   );
 };

@@ -19,5 +19,5 @@ export type StateContextType = {
   setFavourites: Function;
   filmDetails: FilmType | null;
   setFilmDetails: Function;
+  films: FilmType[] | null;
 };
-

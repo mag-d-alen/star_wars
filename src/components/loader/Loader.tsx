@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import { LoaderContainer } from "./Loader.styled";
 
-export const Loader = () => {
-  return (
-    <div>Loader</div>
-  )
-}
+export const Loader = () => (
+  <LoaderContainer>Loading film titles...</LoaderContainer>
+);
