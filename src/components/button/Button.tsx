@@ -6,8 +6,7 @@ export const Button: React.FC<{
   width: string;
   color: string;
   clickHandle: Function;
-  key?: number;
-}> = ({ key, text, width, color, clickHandle }) => {
+}> = ({  text, width, color, clickHandle }) => {
   return (
     <ButtonContainer onClick={() => clickHandle()} color={color} width={width}>
       {text}
